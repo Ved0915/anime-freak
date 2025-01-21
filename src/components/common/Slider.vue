@@ -41,23 +41,35 @@ onMounted(() => {
       navigation
       ref="swiperInstance"
     >
-      <swiper-slide v-for="(anime, index) in featuredAnimes" :key="anime.mal_id">
-        <div class="relative w-full" :class="{ 'h-screen md:h-[60vh]': slidesPerView === 1, 'h-[40vh]': slidesPerView !== 1 }">
-          <img
-            :src="anime.images.jpg.large_image_url"
-            :alt="anime.title"
-            class="object-cover w-full h-full"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-black opacity-60"></div>
-          <div class="absolute bottom-4 left-4 text-white font-bold text-xl md:text-2xl">
-            {{ anime.title }}
+      <swiper-slide
+        v-for="(anime, index) in featuredAnimes"
+        :key="anime.mal_id"
+        class="relative overflow-hidden bg-[#201f31]w-full"
+        :class="{
+          'h-screen md:h-[85vh]': slidesPerView === 1,
+          'h-[60vh]': slidesPerView !== 1,
+        }"
+      >
+        <div class="items absolute top-0 w-full">
+          <div class="cover top-0 bottom-0 right-0 left-[30%]">
+            <img
+              :src="anime.images.jpg.large_image_url"
+              :alt="anime.title"
+              class="object-cover w-full h-full"
+            />
           </div>
-          <div class="absolute bottom-12 left-4 text-white text-sm md:text-base">
-            Rating: {{ anime.rating }} | Genres:
-            {{ anime.genres.map((g) => g.name).join(", ") }}
-          </div>
-          <div class="absolute bottom-20 left-4 text-white text-sm md:text-base">
-            {{ anime.synopsis }}
+          <div class="left-0">
+            <div class="bg-gradient-to-t from-black opacity-60"></div>
+            <div class="bottom-4 left-4 text-white font-bold text-xl md:text-2xl">
+              {{ anime.title }}
+            </div>
+            <div class="bottom-12 left-4 text-white text-sm md:text-base">
+              Rating: {{ anime.rating }} | Genres:
+              {{ anime.genres.map((g) => g.name).join(", ") }}
+            </div>
+            <div class="bottom-20 left-4 text-white text-sm md:text-base">
+              {{ anime.synopsis }}
+            </div>
           </div>
         </div>
       </swiper-slide>

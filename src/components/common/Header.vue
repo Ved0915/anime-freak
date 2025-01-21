@@ -47,33 +47,35 @@ onBeforeUnmount(() => {
 
         <!-- Logo -->
         <router-link to="/" id="logo" class="flex items-center">
-          <div class="ml-2 text-4xl">
-            <span class="font-semibold text-2xl">Anime</span>
-            <span class="font-medium">Freak</span>
+          <div class="ml-2">
+            <span class="font-semibold">Anime</span>
+            <span class="font-medium text-2xl">Freak</span>
           </div>
         </router-link>
 
         <!-- Search Bar (Desktop) -->
         <div
           id="search"
-          class="relative flex-1 mx-4"
+          class="relative flex mx-4"
           :class="{
             block: searchBarVisible,
             hidden: !searchBarVisible,
             'lg:flex': !searchBarVisible,
           }"
         >
-          <form action="/search" autocomplete="off" class="flex items-center w-full">
+          <form action="/search" autocomplete="off" class="flex items-center">
             <input
               type="text"
-              class="form-control search-input px-4 py-2 max-w-md rounded-md border border-gray-600 text-black flex-1 bord"
+              class="form-control search-input px-4 py-2 rounded-md border border-gray-600 text-black flex-1 bord"
               name="keyword"
               placeholder="Search anime..."
               required
             />
-            <a href="/filter" class="text-white mr-2 hover:underline">Filter</a>
-            <button type="submit" class="text-white">
-              <font-awesome-icon :icon="['fas', 'search']" class="text-xl" />
+            <button
+              type="submit"
+              class="absolute top-1/2 transform -translate-y-1/2 right-3 text-black"
+            >
+              <font-awesome-icon :icon="['fas', 'search']" />
             </button>
           </form>
         </div>
